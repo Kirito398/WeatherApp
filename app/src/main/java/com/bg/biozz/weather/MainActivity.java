@@ -179,15 +179,15 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
 
-                            cityNames.add(cityName);
+                            cityNames.add(data.getName());
 
                             SQLiteDatabase database = dbHelper.getWritableDatabase();
                             ContentValues contentValues = new ContentValues();
-                            contentValues.put(DBHelper.KEY_NAME, cityName);
+                            contentValues.put(DBHelper.KEY_NAME, data.getName());
                             database.insert(DBHelper.TABLE_CITYS, null, contentValues);
 
                             mainLayout.addView(view);
-                            Snackbar.make(mainLayout, "New City: " + cityName + " added!", Snackbar.LENGTH_LONG)
+                            Snackbar.make(mainLayout, "New City: " + data.getName() + " added!", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
                         } else {
                             Snackbar.make(mainLayout, "City " +cityName+ ": not found! City not added!", Snackbar.LENGTH_LONG)
